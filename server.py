@@ -25,7 +25,7 @@ fig,ax=plt.subplots()
 
 tmp=0
 connected = False
-timeout = time.time() + 60
+timeout = time.time() + 60*45
 while time.time() < timeout:
     # Wait for connection
     while not connected and time.time() < timeout:
