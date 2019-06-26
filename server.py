@@ -17,10 +17,6 @@ serverSock.listen(5)
 
 x = []
 y = []
-plt.axis([-1, 4, 0, 5]) #TODO
-
-x = []
-y = []
 fig,ax=plt.subplots()
 
 tmp=0
@@ -67,6 +63,7 @@ while time.time() < timeout:
                 if tmp==1:
                     plt.show()
                 else:
+                    plt.savefig('FOBStream/plot.jpg')
                     plt.show()#draw()
         except socket.error:
             # Will throw error every time no message is received...
