@@ -1,20 +1,27 @@
 import socket
 import cmd
 import time
+import traceback
+import select
 
-UDP_IP_ADDRESS = "127.0.0.1"
-UDP_PORT_NO = 6288
+host = "127.0.0.1"
+port = 6288
 
-clientSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+sock.setblocking(0)
 
+sock.connect((host,port))
+	
 class Prompt(cmd.Cmd):
 	def do_send(self,msg):
 		print("Sending: <", msg, ">")
-		clientSock.sendto(str.encode(msg), (UDP_IP_ADDRESS, UDP_PORT_NO))
+		sock.sendto(str.encode(msg), (host, port))
 	
 	def default(self,msg):
-		print("Sending: <", msg, ">")
-		clientSock.sendto(str.encode(msg), (UDP_IP_ADDRESS, UDP_PORT_NO))
+		sock.sendto(str.encode(msg), (host, port))
+		#sock.send(str.encode(msg))
+		print("Sent: <", msg, ">")
 
 	def do_EOF(self, line):
 		return True
