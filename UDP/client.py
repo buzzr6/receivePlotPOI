@@ -4,7 +4,7 @@ import time
 import traceback
 import select
 
-host = "172.20.10.14"#"127.0.0.1"
+host = "172.20.10.6"#"127.0.0.1"
 port = 1234
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
