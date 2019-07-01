@@ -5,13 +5,16 @@ import traceback
 import select
 
 host = "127.0.0.1"
-port = 6288
+port = 1234
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 sock.setblocking(0)
 
-sock.connect((host,port))
+try:
+	sock.connect((host,port))
+except:
+	'''traceback.print_exc()'''
 	
 class Prompt(cmd.Cmd):
 	def do_send(self,msg):
