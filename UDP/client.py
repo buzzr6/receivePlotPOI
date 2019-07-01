@@ -4,7 +4,7 @@ import time
 import traceback
 import select
 
-host = "127.0.0.1"
+host = "172.20.10.14"#"127.0.0.1"
 port = 1234
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,3 +31,4 @@ class Prompt(cmd.Cmd):
 
 if __name__ == '__main__':
 	Prompt().cmdloop()
+

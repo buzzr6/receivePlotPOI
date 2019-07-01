@@ -6,7 +6,7 @@ import numpy as np
 from threading import Thread
 import traceback
 
-UDP_IP_ADDRESS = "127.0.0.1"
+UDP_IP_ADDRESS = "172.20.10.14"#"127.0.0.1"
 UDP_PORT_NO = 1234
 
 serverSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -62,7 +62,7 @@ while time.time() < timeout:
 					plt.plot(x[i],y[i],'o')
 				time.sleep(.5)
 				if tmp==1:
-					plt.show()
+					#plt.show()
 				else:
 					plt.savefig('plot.jpg')
 					#plt.show()#draw()
