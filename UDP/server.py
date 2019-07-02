@@ -6,7 +6,7 @@ import numpy as np
 from threading import Thread
 import traceback
 
-UDP_IP_ADDRESS = "172.20.10.6"#"127.0.0.1"
+UDP_IP_ADDRESS = "192.168.0.101"#"172.20.10.6"#"127.0.0.1"
 UDP_PORT_NO = 1234
 
 serverSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -61,11 +61,13 @@ while time.time() < timeout:
 				for i in range(0,tmp):
 					plt.plot(x[i],y[i],'o')
 				time.sleep(.5)
+                # Now I have no idea why the following if/else has to be broken down like that,
+                # but it seems to be the case, so probably best not to fuck with it
 				if tmp==1:
-                    pass
-					#plt.show()
+					plt.savefig('C:\\Apache24\\htdocs\\plot.jpg')
+                    #plt.show()
 				else:
-					plt.savefig('plot.jpg')
+					plt.savefig('C:\\Apache24\\htdocs\\plot.jpg')
 					#plt.show()#draw()
 		except socket.error:
 			# Will throw error every time no message is received...
