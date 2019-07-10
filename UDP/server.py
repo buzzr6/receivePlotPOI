@@ -46,10 +46,22 @@ while time.time() < timeout:
 			if msg == "":
 				break;
 				
-			# Extract data
-			obj = json.loads(msg)
-			x.append(obj['lon'])
-			y.append(obj['lat'])
+			# Retrieve coordinates from file
+			gpsLogPath = "test.log" #TODO: adjust accordingly
+			prev = ""
+			with open(gpsLogPath, 'rb') as file:
+				for line in file:
+					penultimate = prev
+					prev = line
+
+			lat = float(str(penultimate).split('\\t')[-1].split('\\n')[0])
+			lon = float(str(line).split('\\t')[-1].split('\\n')[0])
+
+			for elem in [lat,lon]:
+				print(elem)
+			
+			x.append(lon)
+			y.append(lat)
 			print("x:",x)
 			print("y:",y)
 
